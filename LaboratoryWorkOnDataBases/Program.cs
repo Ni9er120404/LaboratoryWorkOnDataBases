@@ -13,9 +13,9 @@
 
 				Console.WriteLine("Процесс выполнен успешно");
 			}
-			catch (Exception)
+			catch (InvalidOperationException)
 			{
-				Console.WriteLine("Ошибка подключения");
+				Console.WriteLine("Исключение недопустимой операции");
 			}
 		}
 	}

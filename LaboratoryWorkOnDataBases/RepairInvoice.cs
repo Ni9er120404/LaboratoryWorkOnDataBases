@@ -6,7 +6,7 @@
 
 		public DateTime DateTime { get; set; }
 
-		public Customer Customer { get; set; } = null!;
+		public List<Customer> Customers { get; set; } = new();
 
 		public int CustomerId { get; set; }
 
