@@ -4,31 +4,29 @@ namespace LaboratoryWorkOnDataBases
 {
 	internal class Context : DbContext
 	{
-		public DbSet<ConstructionCompany> ConstructionCompanies { get; set; }
+		public virtual DbSet<ConstructionCompany> ConstructionCompanies { get; set; } = null!;
 
-		public DbSet<Order> Orders { get; set; }
+		public virtual DbSet<ConstructionRepair> ConstructionRepairs { get; set; } = null!;
 
-		public DbSet<Customer> Customers { get; set; }
+		public virtual DbSet<Customer> Customers { get; set; } = null!;
 
-		public DbSet<RepairInvoice> RepairInvoices { get; set; }
+		public virtual DbSet<Order> Orders { get; set; } = null!;
 
-		public DbSet<ConstructionRepair> ConstructionRepairs { get; set; }
+		public virtual DbSet<RepairInvoice> RepairInvoices { get; set; } = null!;
 
-		public DbSet<Worker> Workers { get; set; }
+		public virtual DbSet<TeamOfWorker> TeamOfWorkers { get; set; } = null!;
 
-		public DbSet<TeamOfWorkers> TeamOfWorkers { get; set; }
-
-
+		public virtual DbSet<Worker> Workers { get; set; } = null!;
 
 		public Context()
 		{
-			Database.EnsureDeleted();
-			Database.EnsureCreated();
+			_ = Database.EnsureDeleted();
+			_ = Database.EnsureCreated();
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBases;Trusted_Connection=True;");
+			_ = optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBases;Trusted_Connection=True;");
 		}
 	}
 }

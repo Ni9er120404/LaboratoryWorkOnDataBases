@@ -6,10 +6,12 @@
 
 		public string Name { get; set; } = null!;
 
-		public string INN { get; set; } = null!;
+		public string Inn { get; set; } = null!;
 
 		public string Address { get; set; } = null!;
 
-		public List<Order> Orders { get; set; } = new();
+		public virtual ConstructionRepair? ConstructionRepair { get; set; }
+
+		public virtual Order? Order { get; set; }
 	}
 }
