@@ -4,8 +4,8 @@
 	{
 		public int Id { get; set; }
 
-		public virtual ConstructionRepair IdNavigation { get; set; } = null!;
+		public ConstructionRepair ConstructionRepair { get; set; } = null!;
 
-		public virtual Worker? Worker { get; set; }
+		public Worker? Worker { get; set; }
 	}
 }

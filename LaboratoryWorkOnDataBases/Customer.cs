@@ -12,8 +12,8 @@
 
 		public string PhoneNumber { get; set; } = null!;
 
-		public virtual Order IdNavigation { get; set; } = null!;
+		public Order Order { get; set; } = null!;
 
-		public virtual RepairInvoice? RepairInvoice { get; set; }
+		public RepairInvoice? RepairInvoice { get; set; }
 	}
 }

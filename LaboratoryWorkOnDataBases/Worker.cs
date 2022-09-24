@@ -12,6 +12,6 @@
 
 		public string PhoneNumber { get; set; } = null!;
 
-		public virtual TeamOfWorker IdNavigation { get; set; } = null!;
+		public TeamOfWorker TeamOfWorker { get; set; } = null!;
 	}
 }

@@ -6,8 +6,8 @@
 
 		public DateTime DateTime { get; set; }
 
-		public virtual Customer? Customer { get; set; }
+		public Customer? Customer { get; set; }
 
-		public virtual ConstructionCompany IdNavigation { get; set; } = null!;
+		public ConstructionCompany ConstructionCompany { get; set; } = null!;
 	}
 }

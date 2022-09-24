@@ -8,6 +8,6 @@
 
 		public decimal Cost { get; set; }
 
-		public virtual Customer IdNavigation { get; set; } = null!;
+		public Customer Customer { get; set; } = null!;
 	}
 }

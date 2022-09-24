@@ -10,8 +10,8 @@
 
 		public string Address { get; set; } = null!;
 
-		public virtual ConstructionRepair? ConstructionRepair { get; set; }
+		public ConstructionRepair? ConstructionRepair { get; set; }
 
-		public virtual Order? Order { get; set; }
+		public Order? Order { get; set; }
 	}
 }

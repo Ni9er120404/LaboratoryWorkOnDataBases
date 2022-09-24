@@ -10,8 +10,8 @@
 
 		public string Kind { get; set; } = null!;
 
-		public virtual ConstructionCompany IdNavigation { get; set; } = null!;
+		public ConstructionCompany ConstructionCompany { get; set; } = null!;
 
-		public virtual TeamOfWorker? TeamOfWorker { get; set; }
+		public TeamOfWorker? TeamOfWorker { get; set; }
 	}
 }
