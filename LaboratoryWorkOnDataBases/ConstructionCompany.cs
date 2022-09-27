@@ -6,7 +6,7 @@
 
 		public string Name { get; set; } = null!;
 
-		public string Inn { get; set; } = null!;
+		public string INN { get; set; } = null!;
 
 		public string Address { get; set; } = null!;
 
