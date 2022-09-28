@@ -10,6 +10,8 @@
 
 		public Customer? Customer { get; set; }
 
+		public int CustomerId { get; set; }
+
 		public ConstructionCompany ConstructionCompany { get; set; } = null!;
 	}
 }

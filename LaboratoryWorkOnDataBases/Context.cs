@@ -40,9 +40,9 @@ namespace LaboratoryWorkOnDataBases
 
 			modelBuilder.Entity<Customer>(entity =>
 			{
-				entity.HasOne(Order => Order.Order)
+				entity.HasMany(Order => Order.Orders)
 				.WithOne(Customer => Customer.Customer)
-				.HasForeignKey<Customer>(key => key.Id);
+				.HasForeignKey(key => key.CustomerId);
 			});
 
 			modelBuilder.Entity<Order>(entity =>

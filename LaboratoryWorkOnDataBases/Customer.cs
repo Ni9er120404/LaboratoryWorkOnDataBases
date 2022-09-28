@@ -12,7 +12,7 @@
 
 		public string PhoneNumber { get; set; } = null!;
 
-		public Order Order { get; set; } = null!;
+		public  List<Order> Orders { get; set; } = new();
 
 		public RepairInvoice? RepairInvoice { get; set; }
 	}
