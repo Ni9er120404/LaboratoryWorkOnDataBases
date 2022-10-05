@@ -6,6 +6,6 @@
 
 		public ConstructionRepair ConstructionRepair { get; set; } = null!;
 
-		public Worker? Worker { get; set; }
+		public List<Worker> Worker { get; set; } = new();
 	}
 }

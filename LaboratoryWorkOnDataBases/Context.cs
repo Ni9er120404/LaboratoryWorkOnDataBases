@@ -34,8 +34,8 @@ namespace LaboratoryWorkOnDataBases
 			modelBuilder.Entity<ConstructionRepair>(entity =>
 			{
 				entity.HasOne(ConstructionCompany => ConstructionCompany.ConstructionCompany)
-				.WithOne(ConstructionRepair => ConstructionRepair.ConstructionRepair)
-				.HasForeignKey<ConstructionRepair>(key => key.Id);
+				.WithMany(ConstructionRepair => ConstructionRepair.ConstructionRepair)
+				.HasForeignKey(key => key.ConstructionCompanyId);
 			});
 
 			modelBuilder.Entity<Customer>(entity =>
@@ -48,8 +48,8 @@ namespace LaboratoryWorkOnDataBases
 			modelBuilder.Entity<Order>(entity =>
 			{
 				entity.HasOne(ConstructionCompany => ConstructionCompany.ConstructionCompany)
-				.WithOne(Order => Order.Order)
-				.HasForeignKey<Order>(key => key.Id);
+				.WithMany(Order => Order.Orders)
+				.HasForeignKey(key => key.ConstructionCompanyId);
 			});
 
 			modelBuilder.Entity<RepairInvoice>(entity =>
@@ -69,8 +69,8 @@ namespace LaboratoryWorkOnDataBases
 			modelBuilder.Entity<Worker>(entity =>
 			{
 				entity.HasOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
-				.WithOne(Worker => Worker.Worker)
-				.HasForeignKey<Worker>(key => key.Id);
+				.WithMany(Worker => Worker.Worker)
+				.HasForeignKey(key => key.TeamOfWorkerId);
 			});
 		}
 	}

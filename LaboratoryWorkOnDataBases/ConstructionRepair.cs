@@ -12,6 +12,15 @@
 
 		public ConstructionCompany ConstructionCompany { get; set; } = null!;
 
+		public int ConstructionCompanyId { get; set; }
+
 		public TeamOfWorker? TeamOfWorker { get; set; }
+
+		public ConstructionRepair(string address, double square, string kind)
+		{
+			Address = address;
+			Square = square;
+			Kind = kind;
+		}
 	}
 }

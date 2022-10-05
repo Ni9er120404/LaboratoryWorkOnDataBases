@@ -10,8 +10,15 @@
 
 		public string Address { get; set; } = null!;
 
-		public ConstructionRepair? ConstructionRepair { get; set; }
+		public List<ConstructionRepair> ConstructionRepair { get; set; } = new();
 
-		public Order? Order { get; set; }
+		public List<Order>? Orders { get; set; } = new();
+
+		public ConstructionCompany(string name, string iNN, string address)
+		{
+			Name = name;
+			INN = iNN;
+			Address = address;
+		}
 	}
 }

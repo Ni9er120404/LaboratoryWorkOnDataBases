@@ -15,5 +15,13 @@
 		public  List<Order> Orders { get; set; } = new();
 
 		public RepairInvoice? RepairInvoice { get; set; }
+
+		public Customer(string address, string lastName, string firstName, string phoneNumber)
+		{
+			Address = address;
+			LastName = lastName;
+			FirstName = firstName;
+			PhoneNumber = phoneNumber;
+		}
 	}
 }

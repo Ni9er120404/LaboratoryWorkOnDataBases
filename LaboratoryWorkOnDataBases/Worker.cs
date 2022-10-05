@@ -13,5 +13,7 @@
 		public string PhoneNumber { get; set; } = null!;
 
 		public TeamOfWorker TeamOfWorker { get; set; } = null!;
+
+		public int TeamOfWorkerId { get; set; }
 	}
 }

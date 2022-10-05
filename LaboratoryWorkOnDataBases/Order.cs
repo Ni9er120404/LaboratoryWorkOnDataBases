@@ -13,5 +13,13 @@
 		public int CustomerId { get; set; }
 
 		public ConstructionCompany ConstructionCompany { get; set; } = null!;
+
+		public int ConstructionCompanyId { get; set; }
+
+		public Order(decimal price, DateTime dateTime)
+		{
+			Price = price;
+			DateTime = dateTime;
+		}
 	}
 }
