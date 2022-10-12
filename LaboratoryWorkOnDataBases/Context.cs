@@ -18,6 +18,8 @@ namespace LaboratoryWorkOnDataBases
 
 		public DbSet<Worker> Workers { get; set; }
 
+		public DbSet<BuildingMaterials> BuildingMaterials { get; set; }
+
 		public Context()
 		{
 			Database.EnsureDeleted();
@@ -70,6 +72,13 @@ namespace LaboratoryWorkOnDataBases
 			{
 				entity.HasOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
 				.WithMany(Worker => Worker.Worker)
+				.HasForeignKey(key => key.TeamOfWorkerId);
+			});
+
+			modelBuilder.Entity<BuildingMaterials>(entity =>
+			{
+				entity.HasOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
+				.WithMany(Materials => Materials.Materials)
 				.HasForeignKey(key => key.TeamOfWorkerId);
 			});
 		}

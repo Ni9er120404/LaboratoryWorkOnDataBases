@@ -9,11 +9,5 @@
 		public decimal Cost { get; set; }
 
 		public Customer Customer { get; set; } = null!;
-
-		public RepairInvoice(DateTime dateTime, decimal cost)
-		{
-			DateTime = dateTime;
-			Cost = cost;
-		}
 	}
 }

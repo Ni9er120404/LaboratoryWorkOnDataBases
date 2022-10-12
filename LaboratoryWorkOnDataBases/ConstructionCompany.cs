@@ -13,12 +13,5 @@
 		public List<ConstructionRepair> ConstructionRepair { get; set; } = new();
 
 		public List<Order>? Orders { get; set; } = new();
-
-		public ConstructionCompany(string name, string iNN, string address)
-		{
-			Name = name;
-			INN = iNN;
-			Address = address;
-		}
 	}
 }
