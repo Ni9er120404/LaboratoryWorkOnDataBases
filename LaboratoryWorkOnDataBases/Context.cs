@@ -29,6 +29,7 @@ namespace LaboratoryWorkOnDataBases
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBases;Trusted_Connection=True;");
+			optionsBuilder.LogTo(Console.WriteLine);
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
