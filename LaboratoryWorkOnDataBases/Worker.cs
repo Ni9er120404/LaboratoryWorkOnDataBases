@@ -6,13 +6,13 @@
 
 		public decimal Salary { get; set; }
 
-		public string LastName { get; set; } = null!;
+		public string? LastName { get; set; }
 
-		public string FirstName { get; set; } = null!;
+		public string? FirstName { get; set; }
 
-		public string PhoneNumber { get; set; } = null!;
+		public string? PhoneNumber { get; set; }
 
-		public TeamOfWorker TeamOfWorker { get; set; } = null!;
+		public TeamOfWorker? TeamOfWorker { get; set; }
 
 		public int TeamOfWorkerId { get; set; }
 	}

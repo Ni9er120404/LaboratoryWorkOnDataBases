@@ -8,6 +8,8 @@
 
 		public decimal Cost { get; set; }
 
-		public Customer Customer { get; set; } = null!;
+		public Customer? Customer { get; set; }
+
+		public int CustomerId { get; set; }
 	}
 }

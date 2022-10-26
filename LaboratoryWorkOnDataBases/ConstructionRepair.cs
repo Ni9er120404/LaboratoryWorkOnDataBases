@@ -4,11 +4,11 @@
 	{
 		public int Id { get; set; }
 
-		public string Address { get; set; } = null!;
+		public string? Address { get; set; }
 
 		public double Square { get; set; }
 
-		public string Kind { get; set; } = null!;
+		public string? Kind { get; set; }
 
 		public ConstructionCompany ConstructionCompany { get; set; } = null!;
 

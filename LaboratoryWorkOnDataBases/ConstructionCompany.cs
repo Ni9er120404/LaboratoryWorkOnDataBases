@@ -4,11 +4,11 @@
 	{
 		public int Id { get; set; }
 
-		public string Name { get; set; } = null!;
+		public string? Name { get; set; }
 
-		public string INN { get; set; } = null!;
+		public string? INN { get; set; }
 
-		public string Address { get; set; } = null!;
+		public string? Address { get; set; }
 
 		public List<ConstructionRepair> ConstructionRepair { get; set; } = new();
 

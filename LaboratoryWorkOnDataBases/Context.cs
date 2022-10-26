@@ -29,7 +29,7 @@ namespace LaboratoryWorkOnDataBases
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBases;Trusted_Connection=True;");
-			optionsBuilder.LogTo(Console.WriteLine);
+			//optionsBuilder.LogTo(Console.WriteLine);
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -53,13 +53,17 @@ namespace LaboratoryWorkOnDataBases
 				entity.HasOne(ConstructionCompany => ConstructionCompany.ConstructionCompany)
 				.WithMany(Order => Order.Orders)
 				.HasForeignKey(key => key.ConstructionCompanyId);
+
+				entity.HasOne(Customer => Customer.Customer)
+				.WithMany(Order => Order.Orders)
+				.HasForeignKey(key => key.CustomerId);
 			});
 
 			modelBuilder.Entity<RepairInvoice>(entity =>
 			{
 				entity.HasOne(Customer => Customer.Customer)
-				.WithOne(RepairInvoice => RepairInvoice.RepairInvoice)
-				.HasForeignKey<RepairInvoice>(key => key.Id);
+				.WithMany(RepairInvoice => RepairInvoice.RepairInvoices)
+				.HasForeignKey(key => key.CustomerId);
 			});
 
 			modelBuilder.Entity<TeamOfWorker>(entity =>
@@ -67,6 +71,14 @@ namespace LaboratoryWorkOnDataBases
 				entity.HasOne(ConstructionRepair => ConstructionRepair.ConstructionRepair)
 				.WithOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
 				.HasForeignKey<TeamOfWorker>(key => key.Id);
+
+				entity.HasMany(Worker => Worker.Worker)
+				.WithOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
+				.HasForeignKey(key => key.TeamOfWorkerId);
+
+				entity.HasMany(BuildingMaterials => BuildingMaterials.Materials)
+				.WithOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
+				.HasForeignKey(key => key.TeamOfWorkerId);
 			});
 
 			modelBuilder.Entity<Worker>(entity =>
