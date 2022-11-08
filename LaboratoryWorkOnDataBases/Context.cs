@@ -20,10 +20,12 @@ namespace LaboratoryWorkOnDataBases
 
 		public DbSet<BuildingMaterials> BuildingMaterials { get; set; }
 
+		public DbSet<LoggingClass> LoggingClasses { get; set; }
+
 		public Context()
 		{
-			//Database.EnsureDeleted();
-			//Database.EnsureCreated();
+			Database.EnsureDeleted();
+			Database.EnsureCreated();
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
