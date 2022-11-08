@@ -22,13 +22,13 @@ namespace LaboratoryWorkOnDataBases
 
 		public Context()
 		{
-			Database.EnsureDeleted();
-			Database.EnsureCreated();
+			//Database.EnsureDeleted();
+			//Database.EnsureCreated();
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBases;Trusted_Connection=True;");
+			optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBase;Trusted_Connection=True;");
 			//optionsBuilder.LogTo(Console.WriteLine);
 		}
 
