@@ -6,6 +6,8 @@
 
 		public int Count { get; set; }
 
+		public string? Action { get; set; }
+
 		public TeamOfWorker? TeamOfWorker { get; set; }
 
 		public int TeamOfWorkerId { get; set; }
