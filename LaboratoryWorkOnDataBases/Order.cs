@@ -6,14 +6,14 @@
 
 		public decimal Price { get; set; }
 
-		public DateTime DateTime { get; set; }
+		public DateTime? DateTime { get; set; }
 
 		public Customer? Customer { get; set; }
 
-		public int CustomerId { get; set; }
+		public int? CustomerId { get; set; }
 
-		public ConstructionCompany ConstructionCompany { get; set; } = null!;
+		public ConstructionCompany? ConstructionCompany { get; set; }
 
-		public int ConstructionCompanyId { get; set; }
+		public int? ConstructionCompanyId { get; set; }
 	}
 }

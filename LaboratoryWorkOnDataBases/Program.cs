@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace LaboratoryWorkOnDataBases
+﻿namespace LaboratoryWorkOnDataBases
 {
 	internal class Program
 	{
@@ -10,7 +8,7 @@ namespace LaboratoryWorkOnDataBases
 			{
 				using (Context context = new())
 				{
-				
+
 				}
 
 				Console.WriteLine("Процесс выполнен успешно");

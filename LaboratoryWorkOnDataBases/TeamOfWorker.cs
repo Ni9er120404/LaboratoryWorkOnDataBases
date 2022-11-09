@@ -6,6 +6,8 @@
 
 		public int CountOfWorker { get; set; }
 
+		public DateTime DateTimes { get; set; }
+
 		public ConstructionRepair? ConstructionRepair { get; set; }
 
 		public List<Worker> Worker { get; set; } = new();

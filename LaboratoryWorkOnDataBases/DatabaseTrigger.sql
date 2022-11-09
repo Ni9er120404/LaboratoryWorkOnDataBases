@@ -61,3 +61,12 @@ AS
 INSERT INTO LoggingClasses(Logging)
 SELECT Salary
 FROM INSERTED
+--8
+GO
+CREATE TRIGGER Loog5
+ON dbo.Orders
+AFTER UPDATE
+AS
+INSERT INTO LoggingClasses(Logging)
+SELECT CONCAT( DateTime, Price)
+FROM inserted 
