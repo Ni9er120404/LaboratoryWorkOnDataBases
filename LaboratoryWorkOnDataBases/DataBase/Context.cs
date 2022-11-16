@@ -24,75 +24,74 @@ namespace LaboratoryWorkOnDataBases
 
 		public Context()
 		{
-			Database.EnsureDeleted();
-			Database.EnsureCreated();
+			_ = Database.EnsureDeleted();
+			_ = Database.EnsureCreated();
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBase;Trusted_Connection=True;");
-			optionsBuilder.LogTo(Console.WriteLine);
+			_ = optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBase;Trusted_Connection=True;");
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<ConstructionRepair>(entity =>
+			_ = modelBuilder.Entity<ConstructionRepair>(entity =>
 			{
-				entity.HasOne(ConstructionCompany => ConstructionCompany.ConstructionCompany)
+				_ = entity.HasOne(ConstructionCompany => ConstructionCompany.ConstructionCompany)
 				.WithMany(ConstructionRepair => ConstructionRepair.ConstructionRepair)
 				.HasForeignKey(key => key.ConstructionCompanyId);
 			});
 
-			modelBuilder.Entity<Customer>(entity =>
+			_ = modelBuilder.Entity<Customer>(entity =>
 			{
-				entity.HasMany(Order => Order.Orders)
+				_ = entity.HasMany(Order => Order.Orders)
 				.WithOne(Customer => Customer.Customer)
 				.HasForeignKey(key => key.CustomerId);
 			});
 
-			modelBuilder.Entity<Order>(entity =>
+			_ = modelBuilder.Entity<Order>(entity =>
 			{
-				entity.HasOne(ConstructionCompany => ConstructionCompany.ConstructionCompany)
+				_ = entity.HasOne(ConstructionCompany => ConstructionCompany.ConstructionCompany)
 				.WithMany(Order => Order.Orders)
 				.HasForeignKey(key => key.ConstructionCompanyId);
 
-				entity.HasOne(Customer => Customer.Customer)
+				_ = entity.HasOne(Customer => Customer.Customer)
 				.WithMany(Order => Order.Orders)
 				.HasForeignKey(key => key.CustomerId);
 			});
 
-			modelBuilder.Entity<RepairInvoice>(entity =>
+			_ = modelBuilder.Entity<RepairInvoice>(entity =>
 			{
-				entity.HasOne(Customer => Customer.Customer)
+				_ = entity.HasOne(Customer => Customer.Customer)
 				.WithMany(RepairInvoice => RepairInvoice.RepairInvoices)
 				.HasForeignKey(key => key.CustomerId);
 			});
 
-			modelBuilder.Entity<TeamOfWorker>(entity =>
+			_ = modelBuilder.Entity<TeamOfWorker>(entity =>
 			{
-				entity.HasOne(ConstructionRepair => ConstructionRepair.ConstructionRepair)
+				_ = entity.HasOne(ConstructionRepair => ConstructionRepair.ConstructionRepair)
 				.WithOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
 				.HasForeignKey<TeamOfWorker>(key => key.Id);
 
-				entity.HasMany(Worker => Worker.Worker)
+				_ = entity.HasMany(Worker => Worker.Worker)
 				.WithOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
 				.HasForeignKey(key => key.TeamOfWorkerId);
 
-				entity.HasMany(BuildingMaterials => BuildingMaterials.Materials)
+				_ = entity.HasMany(BuildingMaterials => BuildingMaterials.Materials)
 				.WithOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
 				.HasForeignKey(key => key.TeamOfWorkerId);
 			});
 
-			modelBuilder.Entity<Worker>(entity =>
+			_ = modelBuilder.Entity<Worker>(entity =>
 			{
-				entity.HasOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
+				_ = entity.HasOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
 				.WithMany(Worker => Worker.Worker)
 				.HasForeignKey(key => key.TeamOfWorkerId);
 			});
 
-			modelBuilder.Entity<BuildingMaterials>(entity =>
+			_ = modelBuilder.Entity<BuildingMaterials>(entity =>
 			{
-				entity.HasOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
+				_ = entity.HasOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
 				.WithMany(Materials => Materials.Materials)
 				.HasForeignKey(key => key.TeamOfWorkerId);
 			});
