@@ -10,8 +10,8 @@
 
 		public string? Address { get; set; }
 
-		public List<ConstructionRepair> ConstructionRepair { get; set; } = new();
+		public IEnumerable<ConstructionRepair>? ConstructionRepair { get; set; }
 
-		public List<Order>? Orders { get; set; } = new();
+		public IEnumerable<Order>? Orders { get; set; }
 	}
 }

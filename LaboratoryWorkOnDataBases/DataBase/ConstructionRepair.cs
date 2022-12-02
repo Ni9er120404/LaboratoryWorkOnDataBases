@@ -10,10 +10,12 @@
 
 		public string? Kind { get; set; }
 
-		public ConstructionCompany ConstructionCompany { get; set; } = null!;
+		public ConstructionCompany? ConstructionCompany { get; set; }
 
-		public int ConstructionCompanyId { get; set; }
+		public int? ConstructionCompanyId { get; set; }
 
 		public TeamOfWorker? TeamOfWorker { get; set; }
+
+		public int? TeamOfWorkerId { get; set; }
 	}
 }

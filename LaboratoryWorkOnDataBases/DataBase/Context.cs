@@ -24,13 +24,13 @@ namespace LaboratoryWorkOnDataBases
 
 		public Context()
 		{
-			_ = Database.EnsureDeleted();
-			_ = Database.EnsureCreated();
+			//_ = Database.EnsureDeleted();
+			//_ = Database.EnsureCreated();
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			_ = optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBase;Trusted_Connection=True;");
+			_ = optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LaboratoryWorkOnDataBases;Trusted_Connection=True;");
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -71,7 +71,7 @@ namespace LaboratoryWorkOnDataBases
 			{
 				_ = entity.HasOne(ConstructionRepair => ConstructionRepair.ConstructionRepair)
 				.WithOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)
-				.HasForeignKey<TeamOfWorker>(key => key.Id);
+				.HasForeignKey<TeamOfWorker>(key => key.ConstructionRepairsId);
 
 				_ = entity.HasMany(Worker => Worker.Worker)
 				.WithOne(TeamOfWorker => TeamOfWorker.TeamOfWorker)

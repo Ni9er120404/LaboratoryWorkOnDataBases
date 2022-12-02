@@ -1,28 +1,64 @@
-﻿using System.Text;
-
-namespace LaboratoryWorkOnDataBases
+﻿namespace LaboratoryWorkOnDataBases
 {
 	internal class Program
 	{
+		public static BuildingMaterials[]? BuildingMaterials { get; set; }
+
+		public static ConstructionCompany[]? ConstructionCompanies { get; set; }
+
+		public static ConstructionRepair[]? ConstructionRepairs { get; set; }
+
+		public static Customer[]? Customers { get; set; }
+
+		public static Order[]? Orders { get; set; }
+
+		public static RepairInvoice[]? RepairInvoices { get; set; }
+
+		public static TeamOfWorker[]? TeamOfWorkers { get; set; }
+
+		public static Worker[]? Workers { get; set; }
+
 		private static void Main()
 		{
-			Customer[] customers = new Customer[100];
-			for(int i=0; i<customers.Length;i++)
-			{
-				customers[i] = new Customer()
-				{
-					Address = Completion(10, 30),
-					LastName = Completion(10, 20),
-					FirstName = Completion(10, 20),
-					PhoneNumber = Completion()
-				};
-			}
+			ClassForFillingInData data = new();
+
+			BuildingMaterials = data.BuildingMaterialsCompletion(1000);
+
+			ConstructionCompanies = data.ConstructionCompanyCompletion(2);
+
+			ConstructionRepairs = data.ConstructionRepairCompletion(100);
+
+			Customers = data.CustomerCompletion(100);
+
+			Orders = data.OrderCompletion(100);
+
+			RepairInvoices = data.RepairInvoiceCompletion(100);
+
+			TeamOfWorkers = data.TeamOfWorkerCompletion(25);
+
+			Workers = data.WorkerCompletion(25);
+
 			try
 			{
 				using (Context context = new())
 				{
-					context.Customers.AddRange(customers);
-					context.SaveChanges();
+					context.BuildingMaterials.AddRange(BuildingMaterials);
+
+					context.ConstructionCompanies.AddRange(ConstructionCompanies);
+
+					context.ConstructionRepairs.AddRange(ConstructionRepairs);
+
+					context.Customers.AddRange(Customers);
+
+					context.Orders.AddRange(Orders);
+
+					context.RepairInvoices.AddRange(RepairInvoices);
+
+					context.TeamOfWorkers.AddRange(TeamOfWorkers);
+
+					context.Workers.AddRange(Workers);
+
+					_ = context.SaveChanges();
 				}
 
 				Console.WriteLine("Процесс выполнен успешно");
@@ -31,35 +67,6 @@ namespace LaboratoryWorkOnDataBases
 			{
 				Console.WriteLine("Исключение недопустимой операции");
 			}
-		}
-
-		private static readonly string Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-		private static readonly string Numbers = "0123456789";
-
-		private static readonly Random Random = new();
-
-		private static string Completion(int a, int b)
-		{
-			int num = Random.Next(a, b);
-			StringBuilder stringBuilder = new();
-
-			for (int i = 0; i < num; i++)
-			{
-				stringBuilder.Append(Text[Random.Next(0, Text.Length)]);
-			}
-
-			return stringBuilder.ToString();
-		}
-
-		private static string Completion()
-		{
-			StringBuilder stringBuilder = new StringBuilder();
-			for(int i=0; i<10;i++)
-			{
-				stringBuilder.Append(Numbers[Random.Next(0, Numbers.Length)]);
-			}
-			return string.Concat("8",stringBuilder.ToString());
 		}
 	}
 }

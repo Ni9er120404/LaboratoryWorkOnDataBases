@@ -1,21 +1,23 @@
 ﻿namespace LaboratoryWorkOnDataBases
 {
-	internal class TeamOfWorker
-	{
-		public int Id { get; set; }
+    internal class TeamOfWorker
+    {
+        public int Id { get; set; }
 
-		public int CountOfWorker { get; set; }
+        public int? CountOfWorker { get; set; }
 
-		public DateTime DateTimes { get; set; }
+        public DateTime DateOnly { get; set; }
 
-		public ConstructionRepair? ConstructionRepair { get; set; }
+        public ConstructionRepair? ConstructionRepair { get; set; }
 
-		public List<Worker> Worker { get; set; } = new();
+        public int? ConstructionRepairsId { get; set; }
 
-		public int WorkerId { get; set; }
+        public IEnumerable<Worker>? Worker { get; set; }
 
-		public List<BuildingMaterials> Materials { get; set; } = new();
+        public int? WorkerId { get; set; }
 
-		public int BuildingMaterialsId { get; set; }
-	}
+        public IEnumerable<BuildingMaterials>? Materials { get; set; }
+
+        public int? BuildingMaterialsId { get; set; }
+    }
 }

@@ -68,5 +68,5 @@ ON dbo.Orders
 AFTER UPDATE
 AS
 INSERT INTO LoggingClasses(Logging)
-SELECT CONCAT( DateTime, Price)
+SELECT CONCAT( DateOnly, Price)
 FROM inserted 

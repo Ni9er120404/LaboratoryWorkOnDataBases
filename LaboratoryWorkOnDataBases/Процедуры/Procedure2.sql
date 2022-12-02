@@ -1,0 +1,3 @@
+CREATE PROCEDURE [dbo].[Procedure2]
+AS
+SELECT * FROM Orders ORDER BY Price;

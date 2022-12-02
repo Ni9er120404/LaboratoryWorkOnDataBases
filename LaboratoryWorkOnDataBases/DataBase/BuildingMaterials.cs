@@ -10,6 +10,6 @@
 
 		public TeamOfWorker? TeamOfWorker { get; set; }
 
-		public int TeamOfWorkerId { get; set; }
+		public int? TeamOfWorkerId { get; set; }
 	}
 }
