@@ -1,72 +1,73 @@
-﻿namespace LaboratoryWorkOnDataBases
+﻿using LaboratoryWorkOnDataBases.Data;
+using LaboratoryWorkOnDataBases.Models;
+
+namespace LaboratoryWorkOnDataBases
 {
-	internal class Program
+	public class Program
 	{
-		public static BuildingMaterials[]? BuildingMaterials { get; set; }
-
-		public static ConstructionCompany[]? ConstructionCompanies { get; set; }
-
-		public static ConstructionRepair[]? ConstructionRepairs { get; set; }
-
-		public static Customer[]? Customers { get; set; }
-
-		public static Order[]? Orders { get; set; }
-
-		public static RepairInvoice[]? RepairInvoices { get; set; }
-
-		public static TeamOfWorker[]? TeamOfWorkers { get; set; }
-
-		public static Worker[]? Workers { get; set; }
-
 		private static void Main()
 		{
-			ClassForFillingInData data = new();
+			using Context context = new();
 
-			BuildingMaterials = data.BuildingMaterialsCompletion(1000);
+			DataSeeder.SeedData(context);
 
-			ConstructionCompanies = data.ConstructionCompanyCompletion(2);
+			DisplayData(context);
 
-			ConstructionRepairs = data.ConstructionRepairCompletion(100);
+			_ = context.SaveChanges();
+		}
 
-			Customers = data.CustomerCompletion(100);
-
-			Orders = data.OrderCompletion(100);
-
-			RepairInvoices = data.RepairInvoiceCompletion(100);
-
-			TeamOfWorkers = data.TeamOfWorkerCompletion(25);
-
-			Workers = data.WorkerCompletion(25);
-
-			try
+		private static void DisplayData(Context context)
+		{
+			Console.WriteLine("Construction Companies:");
+			foreach (ConstructionCompany company in context.ConstructionCompanies)
 			{
-				using (Context context = new())
-				{
-					context.BuildingMaterials.AddRange(BuildingMaterials);
-
-					context.ConstructionCompanies.AddRange(ConstructionCompanies);
-
-					context.ConstructionRepairs.AddRange(ConstructionRepairs);
-
-					context.Customers.AddRange(Customers);
-
-					context.Orders.AddRange(Orders);
-
-					context.RepairInvoices.AddRange(RepairInvoices);
-
-					context.TeamOfWorkers.AddRange(TeamOfWorkers);
-
-					context.Workers.AddRange(Workers);
-
-					_ = context.SaveChanges();
-				}
-
-				Console.WriteLine("Процесс выполнен успешно");
+				Console.WriteLine(company);
 			}
-			catch (InvalidOperationException)
+
+			Console.WriteLine("\nCustomers:");
+			foreach (Customer customer in context.Customers)
 			{
-				Console.WriteLine("Исключение недопустимой операции");
+				Console.WriteLine(customer);
 			}
+
+			Console.WriteLine("\nConstruction Repairs:");
+			foreach (ConstructionRepair repair in context.ConstructionRepairs)
+			{
+				Console.WriteLine(repair);
+			}
+
+			Console.WriteLine("\nOrders:");
+			foreach (Order order in context.Orders)
+			{
+				Console.WriteLine(order);
+			}
+
+			Console.WriteLine("\nRepair Invoices:");
+			foreach (RepairInvoice invoice in context.RepairInvoices)
+			{
+				Console.WriteLine(invoice);
+			}
+
+			Console.WriteLine("\nTeam of Workers:");
+			foreach (TeamOfWorker team in context.TeamOfWorkers)
+			{
+				Console.WriteLine(team);
+			}
+
+			Console.WriteLine("\nWorkers:");
+			foreach (Worker worker in context.Workers)
+			{
+				Console.WriteLine(worker);
+			}
+
+			Console.WriteLine("\nBuilding Materials:");
+			foreach (BuildingMaterials material in context.BuildingMaterials)
+			{
+				Console.WriteLine(material);
+			}
+
+			Console.WriteLine("\nPress any key to exit...");
+			_ = Console.ReadKey();
 		}
 	}
 }
