@@ -1,3 +1,0 @@
-CREATE PROCEDURE [dbo].[Procedure3] @N NVARCHAR
-AS
-SELECT * FROM Customers WHERE LastName LIKE @N ORDER BY LastName;
